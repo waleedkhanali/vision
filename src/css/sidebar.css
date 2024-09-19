@@ -1,0 +1,62 @@
+
+.right{
+    width: 50vw;
+    height: 100vh;
+    transition: 2s ease all;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(100vw);
+    z-index: 99;
+}
+.right ul li{
+    list-style: none;
+    display: block;
+    padding: 12px 14px;
+}
+.right ul{
+    margin-top: 30px;
+}
+.right ul li a{
+    color: black;
+    font-size: 50px;
+    text-decoration: none;
+    font-weight: bolder;
+    font-family: sans-serif;
+}
+.right .close{
+    font-size: 50px;
+    font-family: sans-serif;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 12px 20px;
+    cursor: pointer;
+}
+.anim_nav{
+    animation-name: show_nav;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+.anim_nav_remove{
+    animation-name: hide_nav;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+@keyframes show_nav{
+    0%{
+        transform: translateX(100vw);
+    }
+    100%{
+        transform: translateX(0vw);
+    }
+}
+  @keyframes hide_nav{
+    0%{
+        transform: translateX(0vw);
+    }
+    100%{
+        transform: translateX(100vw);
+    }
+}

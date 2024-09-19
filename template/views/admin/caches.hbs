@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/admin/caches.css">
+</head>
+<body>
+    <div id="container">
+        <h2>PLEASE CLEAR YOUR ALL CACHES</h2>
+    </div>
+    
+    <div class="status waiting">
+  <span>
+  <div class="loader"></div>
+  Waiting for response
+  </span>
+</div> 
+<div class="status err">Something wents wrong</div>
+<div class="status uploaded">Uploaded successfully</div>
+    
+    
+    <script>
+    var cacheas = JSON.parse("{{cache}}".replaceAll("&quot;",'"'));
+    var container = document.getElementById("container");
+    var waiting = document.querySelector(".waiting");
+    var err = document.querySelector(".err");
+    var uploaded = document.querySelector(".uploaded");
+    console.log(cacheas)
+    cacheas.forEach(elem => {
+        var div = document.createElement("div");
+        var span = document.createElement("a");
+        span.href = elem.delete_url;
+        var i = document.createElement("i");
+        span.innerHTML = elem.delete_url;
+        span.className = "delete_url";
+        i.className = "fa-solid fa-xmark";
+        div.className = "delete_div";
+        container.appendChild(div)
+        div.appendChild(span)
+        div.appendChild(i)
+        i.addEventListener("click",function(){
+            var a = confirm("Are yousure you want to delete the url");
+            if(a){
+                waiting.style.display = "flex";
+                div.remove();
+                fetch("/admin/clearCache",{
+                    headers: {
+'Content-Type': 'application/json'
+},
+                    method:"POST",
+                    body:JSON.stringify({id:elem._id})
+                }).then(response => {
+                    return response.text();
+                }).then(data => {
+                    var data1 = JSON.parse(data);
+                    if(data1.code == 200){
+                        uploaded.style.display = "block";
+                    }else{
+                        err.style.display = "block";
+                    }
+                    setTimeout(function(){
+                        waiting.style.display = "none";
+                        err.style.display = "none";
+                        uploaded.style.display = "none";
+                    },2000)
+                })
+            }
+        })
+
+    })
+    </script>
+</body>
+</html>

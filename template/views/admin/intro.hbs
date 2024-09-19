@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        // ----- Personal preference -----
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+// ----- Variable Declarations -----
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+// ----- Styles -----
+body, html {
+  min-height: 100vh;
+  background: #666;
+  font-family: sans-serif;
+ 
+}
+body{
+    overflow: hidden;
+}
+.table {
+  display: table;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+}
+.table-cell {
+
+  display: table-cell;
+  vertical-align: middle;
+}
+.modal {
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;   
+ aspect-ratio: 16/9;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0 40px 50px rgba(black, 0.35);
+  padding: 40px;
+  padding-top: 100px;
+}
+#mediaFile {
+  position: absolute;
+  top: -1000px;
+}
+#profile {
+    aspect-ratio: 4/2;
+  margin: 0 auto;
+  position: relative;
+  top: -80px;
+  margin-bottom: -80px;
+  cursor: pointer;
+  background: #f4f4f4;
+  display: table;
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 0 5px 8px rgba(black, 0.35);
+  .dashes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 4px dashed #ddd;
+    opacity: 1;
+  }
+  label {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    padding: 0 30px;
+    color: grey;
+    opacity: 1;
+  }
+  &.dragging {
+    background-image: none!important;
+    .dashes {
+      animation-duration: 10s;
+      animation-name: spin;
+      animation-iteration-count:infinite;
+      animation-timing-function: linear;
+      opacity: 1!important;
+    }
+    label {
+      opacity: 0.5!important;
+    }
+  }
+  &.hasImage {
+    .dashes, label {
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+  }
+}
+h1 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+.stat {
+  width: 50%;
+  text-align: center;
+  float: left;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  .label {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase
+  }
+  .num {
+    font-size: 21px;
+    padding: 3px 0;
+  }
+}
+.editable {
+  position: relative;
+  i {
+    position: absolute;
+    top: 10px;
+    right: -20px;
+    opacity: 0.3
+  }
+}
+button {
+  width: 100%;
+  -webkit-appearance: none;
+  line-height: 40px;
+  color: #fff;
+  border: none;
+  background-color: #ea4c89;
+  margin-top: 30px;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase
+}
+select{
+    padding: 12px 14px;
+    border: none;
+}
+#logo_name:focus{
+    outline: none;
+}
+#logo_name{
+    width: 100%;
+    min-height: 50px;
+}
+
+*{
+    font-family: sans-serif;
+}
+// ----- Mobile styles -----
+@media only screen 
+  and (max-device-width: 736px) { 
+  }
+  .status{
+    position: absolute;
+    width: 90%;
+    bottom: 0;
+    padding: 12px 14px;
+    text-align: center;
+    margin-left: 5%;
+    background-color: #FEEFB3;
+    color: #9F6000;
+    display: none;
+  }
+  .loader {
+  border: 5px solid #f3f3f3; /* Light grey */
+  border-top: 5px solid #3498db; /* Blue */
+  border-radius: 50%;
+  min-width: 10px;
+  height: 10px;
+  display: inline-block;
+  animation: spin 2s linear infinite;
+  margin-right: 5px;
+}
+.waiting{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: none;
+}
+.err{
+  background-color: #FFBABA;
+  color: #DD1721;
+}
+.uploaded{
+  background-color: #BEF;
+   color: #270;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+    </style>
+</head>
+<body>
+    <div class="table">
+  <div class="table-cell">
+    <div class="modal">
+      <div id="profile">
+        <div class="dashes"></div>
+        <label>Click to browse or drag an image here</label></div>
+      <div class="editable"><i class="fa fa-pencil"></i><h1 id="logo_name" contenteditable="true">INTRO NAME</h1></div>
+      <div class="stat">
+        <div class="label">Price</div>
+        <div class="num">500</div>
+      </div>
+      <div class="stat">
+        <div class="label">SHOW AS</div>
+        <select name="" id="showas">
+            <option value="0">Normal</option>
+            <option value="1">Top</option>
+        </select>
+      </div>
+      <button onclick="upload(this)">ADD INTRO</button>
+    </div>
+  </div>
+</div>
+<div class="status waiting">
+  <span>
+  <div class="loader"></div>
+  Waiting for response
+  </span>
+</div> 
+<div class="status err">Something wents wrong</div>
+<div class="status uploaded">Uploaded successfully</div>
+<input type="file" id="mediaFile" />
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+    var file_data;
+    // ----- On render -----
+$(function() {
+
+  $('#profile').addClass('dragging').removeClass('dragging');
+});
+
+$('#profile').on('dragover', function() {
+  $('#profile').addClass('dragging')
+}).on('dragleave', function() {
+  $('#profile').removeClass('dragging')
+}).on('drop', function(e) {
+  $('#profile').removeClass('dragging hasImage');
+
+  if (e.originalEvent) {
+    var file = e.originalEvent.dataTransfer.files[0];
+    var reader = new FileReader();
+
+    //attach event handlers here...
+
+    reader.readAsDataURL(file);
+    reader.onload = function(e) {
+         file_data = file ;
+      $('#profile').css('background-image', 'url(' + reader.result + ')').addClass('hasImage');
+
+    }
+
+  }
+})
+$('#profile').on('click', function(e) {
+  console.log('clicked')
+  $('#mediaFile').click();
+});
+window.addEventListener("dragover", function(e) {
+  e = e || event;
+  e.preventDefault();
+}, false);
+window.addEventListener("drop", function(e) {
+  e = e || event;
+  e.preventDefault();
+}, false);
+$('#mediaFile').change(function(e) {
+
+  var input = e.target;
+  if (input.files && input.files[0]) {
+    var file = input.files[0];
+
+    var reader = new FileReader();
+
+    reader.readAsDataURL(file);
+    reader.onload = function(e) {
+         file_data = file;
+      $('#profile').css('background-image', 'url(' + reader.result + ')').addClass('hasImage');
+     
+    }
+  }
+})
+function upload(ele){
+  ele.disabled = true;
+  console.log(ele)
+    var file = file_data;
+    var logo_name = document.getElementById("logo_name");
+    var show_as = document.getElementById("showas");
+    var formElement = document.createElement("form");
+    var formData = new FormData();
+    formData.append('logo_name', logo_name.innerHTML);
+    formData.append('showas', show_as.value);
+    formData.append("file",file)
+     $(".waiting").css({"display":"flex"})
+  fetch("/admin/add_intro",{
+        
+        method: "POST",
+    body: formData
+  })
+  .then(response => {
+    return response.text();
+  }).then(data => {
+    var data1 = JSON.parse(data);
+    if(data1.code == 200){
+      logo_name.innerHTML = "INRTRO NAME";
+      $('#profile').css({"background-image":"none"})
+       $(".uploaded").css({"display":"block"})
+        $(".waiting").css({"display":"none"})
+       $(".err").css({"display":"none"})
+    }else{
+       $(".uploaded").css({"display":"none"})
+        $(".waiting").css({"display":"none"})
+       $(".err").css({"display":"block"})
+    }
+    setTimeout(function(){
+      $(".uploaded").css({"display":"none"})
+        $(".waiting").css({"display":"none"})
+       $(".err").css({"display":"none"});
+       window.location.href='';
+    },5000)
+  })
+    }
+      
+ 
+</script>
+</body>
+</html>

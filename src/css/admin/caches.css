@@ -1,0 +1,90 @@
+@font-face {
+    font-family: myfonts;
+    src: url(../../fonts/fonts.woff2);
+  }
+#container{
+    width: 100%;
+}
+#container h2{
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-family: myfonts;
+}
+#container .delete_div{
+    width: 80%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background-color: #FEEFB3;
+    color: #9F6000;
+    display: flex;
+    margin-left: 10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: sans-serif;
+    overflow: hidden;
+}
+.delete_div .delete_url{
+    width: 80%;
+    line-break: anywhere;
+    color: #9F6000;
+    text-decoration: none;
+}
+.delete_div i{
+    width: 20%;
+    padding: 12px 14px;
+    font-size: 20px;
+    text-align: right;
+}
+ .status{
+position: absolute;
+width: 90%;
+bottom: 0;
+padding: 12px 14px;
+text-align: center;
+margin-left: 5%;
+background-color: #FEEFB3;
+color: #9F6000;
+display: none;
+font-family: myfonts;
+}
+.loader {
+border: 5px solid #f3f3f3; /* Light grey */
+border-top: 5px solid #3498db; /* Blue */
+border-radius: 50%;
+min-width: 10px;
+height: 10px;
+display: inline-block;
+animation: spin 2s linear infinite;
+margin-right: 5px;
+}
+.waiting{
+display: none;
+justify-content: center;
+align-items: center;
+text-align: none;
+}
+.err{
+background-color: #FFBABA;
+color: #DD1721;
+}
+.uploaded{
+background-color: #BEF;
+color: #270;
+}
+@keyframes spin {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+@media screen and (max-width : 700px) {
+#container h2{
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+.status{
+    margin-left: 0px;
+}
+
+}

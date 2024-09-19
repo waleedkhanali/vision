@@ -1,0 +1,194 @@
+{
+    "dashboard":{
+        "total_visitors":[
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 0
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 2
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 1
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 2
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 5
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 7
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 3
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 15
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 15
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 25
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 5
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 15
+            }
+
+        ],
+        "visitors_facebook":[
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 0
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 2
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 1
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 2
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 5
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 7
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 3
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 15
+            },
+            {
+                "day": 1,
+                "country" : [],
+                "visitors": 15
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 25
+            },
+            {
+                "day": 7,
+                "country" : [],
+                "visitors": 5
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 15
+            }
+        ],
+        "visitor_instagram":[
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 0
+            },
+            {
+                "day": 2,
+                "country" : [],
+                "visitors": 2
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 1
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 2
+            },
+            {
+                "day": 4,
+                "country" : [],
+                "visitors": 5
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 7
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 3
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 15
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 15
+            },
+            {
+                "day": 9,
+                "country" : [],
+                "visitors": 25
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 5
+            },
+            {
+                "day": 5,
+                "country" : [],
+                "visitors": 15
+            }
+        ],
+        "visitor_from_other_country":[],
+        "visitor_other":[],
+        "like_products":[]
+}
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/owlcarosel/owl.carousel.min.css">
+    <link rel="stylesheet" href="/owlcarosel/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/admin/css/manageProduct.css">
+</head>
+<body>
+    <nav class="nav_manager">
+        <h2>MANAGE</h2>
+        <ul>
+            <li  onclick="hide_manager_tab(this)"><i class="fa-solid fa-indent"></i></li>
+            <li onclick="saveInfo()"><i class="fa-regular fa-floppy-disk"></i></li>
+            <li></li>
+        </ul>
+    </nav>
+    <div class="owl-carousel" id="owlcarosel">
+        <div class="item item-basic">
+            <div class="innercontainer" ondrop="drop(event)" ondragover="allowDrop(event)">
+               <h2>DROP FILE TO ADD</h2>
+            </div>
+        </div>
+
+    </div>
+    <div class="manage-tab" id="manage_tab">
+
+    </div>
+    <div class="allProducts" id="allProducts">
+        <h2>All Thumbnails</h2>
+        <div id="line1" class="line"></div>
+        <div id="line2" class="line"></div>
+        <div id="line3" class="line"></div>
+
+    </div>
+
+
+
+     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="/owlcarosel/owl.carousel.js"></script>
+    <script src="/owlcarosel/owl.carousel.min.js"></script>
+    <script src="/admin/js/manageProducts.js"></script>
+    <script>
+        var showOnTop = [];
+        var deletedImage = [];
+        var normalArray = [];
+        
+        const a = JSON.parse("{{products}}".replaceAll("&quot;",'"'))
+        console.log(a)
+        var manage_tab = document.getElementById("manage_tab");
+        
+        var i=1;
+        var line = 1;
+        a.forEach(elem => {
+            //////////////////IF THE ITEM IS SET TO TOP THEN SET TO TOP////////////////////////////////////////
+            if(elem.product_show == true){
+        var div = document.createElement("div");
+  var overlay = document.createElement("div");
+  div.className = "item";
+  overlay.innerHTML = '<i class="fa-solid fa-trash"></i>';
+  overlay.className = "carousel_overlay"
+
+  showOnTop.push(elem._id);
+  var dataId = document.createElement("img");
+  dataId.src = elem.product_url;
+   div.appendChild(dataId)
+   div.appendChild(overlay)
+  dataId.className = "image_carousel"
+      addProductInLine(line,elem)
+  var owl_item = document.createElement('div');
+  overlay.addEventListener("dblclick",function(){
+    normalArray.push(elem._id)
+ 
+ showOnTop = showOnTop.filter(function(e) { return e !== elem._id })
+ manage_tab.appendChild(dataId);
+ dataId.classList = "images_tabs";
+ div.remove();
+
+  
+  })
+  document.querySelector('.owl-carousel').appendChild(div)
+if(line == 3){
+    line = 1
+}else{
+line++;
+}
+
+            }
+             else{
+            var image = document.createElement("img");
+            image.src = elem.product_url;
+            manage_tab.appendChild(image);
+            image.className = "images_tabs"
+            image.id=`drag${i}`;
+            image.draggable="true";
+            image.addEventListener("dragstart",drag);
+            image.setAttribute("_id",elem._id);
+            addProductInLine(line,elem)
+            i++
+            if(line == 3){
+                line = 1
+            }else{
+            line++;
+            }
+            }
+           
+
+        })
+        $('.owl-carousel').owlCarousel({
+loop:true,
+margin:10,
+nav:true,
+responsive:{
+0:{
+   items:1
+},
+600:{
+   items:1
+},
+1000:{
+   items:1
+}
+}
+})
+      
+    </script>
+    
+</body>
+</html>

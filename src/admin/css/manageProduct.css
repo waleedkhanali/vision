@@ -1,0 +1,145 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+
+    overflow-x: hidden;
+}
+.owl-carousel{
+    transition: 2s ease all;
+    width: 80%;
+   aspect-ratio: 16/9;
+    overflow: hidden;
+    width: 80%;
+    float: left;
+}
+.owl-carousel .item{
+    width: 100%;
+     aspect-ratio: 16/9;
+   
+}
+
+.item{
+width: 100%;
+height: 100%;
+background-size: cover;
+position: relative;
+
+}
+.carousel_overlay{
+z-index: 99;
+background-color: rgba(48, 47, 47, 0.26);
+position: absolute;
+top: 0;
+left: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100%;
+font-size: 30px;
+display: none;
+}
+.image_carousel{
+width: 100%;
+height: 100%;
+}
+.item:hover .carousel_overlay{
+display: flex;
+}
+.item-basic .innercontainer{
+width: 60%;
+height: 60%;
+margin-left: 20%;
+margin-top: 20%;
+}
+.innercontainer h2{
+width: 100%;
+text-align: center;
+font-family: sans-serif;
+font-weight: 500;
+}
+.manage-tab{
+width: 20%;
+height: 100vh;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+float: left;
+transition: 2s ease all;
+position: fixed;
+top: 100px;
+right: 0;
+background-color: white;
+}
+.nav_manager{
+width: 100vw;
+float: left;
+padding: 12px 0px;
+position: sticky;
+top: 0;
+left: 0;
+background-color: white;
+height: 100px;
+}
+.nav_manager h2{
+font-family: sans-serif;
+float: left;
+}
+.nav_manager ul{
+float: right;
+padding-top: 12px;
+}
+.nav_manager ul li{
+list-style: none;
+display: inline;
+padding: 12px 14px;
+
+}
+.images_tabs{
+max-width: 100%;
+width: 100%;
+}
+.allProducts{
+float: left;
+width: 80%;
+margin-top: 100px;
+
+}
+.allProducts .image_container{
+width: 100%;
+margin-top: 10px;
+margin-bottom: 10px;
+position: relative;
+}
+.allProducts .image_container .product_image{
+width: 100%;
+}
+.allProducts h2{
+float: left;
+width: 100%;
+text-align: center;
+font-family: sans-serif;
+font-weight: 500;
+}
+.line{
+width: 30%;
+float: left;
+margin: 1.6%;
+}
+.overlay{
+z-index: 99;
+background-color: rgba(48, 47, 47, 0.26);
+position: absolute;
+top: 0;
+left: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100%;
+font-size: 30px;
+display: none;
+}
+.image_container:hover .overlay{
+display: flex;
+}
